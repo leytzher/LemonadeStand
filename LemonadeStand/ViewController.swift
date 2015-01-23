@@ -21,6 +21,11 @@ class ViewController: UIViewController {
 	var containerFive: UIView!  // for start day
 	var appTitle: UILabel!
 	
+	var lemonImageView: UIImageView!
+	var iceImageView: UIImageView!
+	
+	
+	
 	
 	
 	// B.) Constants
@@ -37,6 +42,7 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		setupContainerViews()
+		setupFirstContainer(self.containerOne)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -104,8 +110,19 @@ class ViewController: UIViewController {
 			height: self.view.bounds.height * 1.0 * kEigth))
 		self.containerFive.backgroundColor = UIColor( red: CGFloat(92.0/255.0), green: CGFloat(230/255.0), blue: CGFloat(160/255.0), alpha: CGFloat(1.0) )
 		self.view.addSubview(self.containerFive)
-		
 	}
-	
+
+	func setupFirstContainer(container:UIView){
+		self.appTitle = UILabel()
+		self.appTitle.text = "Lemonade Stand"
+		self.appTitle.textColor = UIColor.darkGrayColor()
+		self.appTitle.font = UIFont(name: "Chalkduster", size: 24.0)
+		self.appTitle.sizeToFit()
+		self.appTitle.center = container.center
+		container.addSubview(self.appTitle)
+	}
 }
+
+
+
 
