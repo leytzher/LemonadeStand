@@ -24,6 +24,14 @@ class ViewController: UIViewController {
 	var lemonImageView: UIImageView!
 	var iceImageView: UIImageView!
 	
+	var balanceLabel: UILabel!
+	var currentBalance: CGFloat! = 100.0
+	var lemonBalanceLabel : UILabel!
+	var lemonBalance:Int = 2
+	var iceBalanceLabel: UILabel!
+	var iceBalance:Int = 1
+	
+	
 	
 	
 	
@@ -43,6 +51,7 @@ class ViewController: UIViewController {
 		// Do any additional setup after loading the view, typically from a nib.
 		setupContainerViews()
 		setupFirstContainer(self.containerOne)
+		setupSecondContainer(self.containerTwo)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -116,10 +125,46 @@ class ViewController: UIViewController {
 		self.appTitle = UILabel()
 		self.appTitle.text = "Lemonade Stand"
 		self.appTitle.textColor = UIColor.darkGrayColor()
-		self.appTitle.font = UIFont(name: "Chalkduster", size: 24.0)
+		self.appTitle.font = UIFont(name: "MarkerFelt-Wide", size: 30)
 		self.appTitle.sizeToFit()
 		self.appTitle.center = container.center
 		container.addSubview(self.appTitle)
+	}
+	
+	func setupSecondContainer(container: UIView){
+		self.lemonImageView = UIImageView(frame: CGRect(x: container.bounds.origin.x, y: container.bounds.origin.y, width: 40, height: 40))
+		self.lemonImageView.image = UIImage(named: "Lemon")
+		self.lemonImageView.center = CGPoint(x: container.frame.width * CGFloat(1.0/6.0), y: container.frame.height * CGFloat(2.0/3.0))
+		container.addSubview(self.lemonImageView)
+		
+		self.iceImageView = UIImageView(frame: CGRect(x: container.bounds.origin.x, y: container.bounds.origin.y, width: 40, height: 40))
+		self.iceImageView.image = UIImage(named: "iceCubes")
+		self.iceImageView.center = CGPoint(x: container.frame.width * CGFloat(4.0/6.0), y: container.frame.height * CGFloat(2.0/3.0))
+		container.addSubview(self.iceImageView)
+		
+		self.balanceLabel = UILabel()
+		self.balanceLabel.text = "$\(self.currentBalance)"
+		self.balanceLabel.textColor = UIColor.whiteColor()
+		self.balanceLabel.font = UIFont(name: "MarkerFelt-Wide", size: 40)
+		self.balanceLabel.sizeToFit()
+		self.balanceLabel.center = CGPoint(x: container.frame.width * CGFloat(3.0/6.0), y: container.frame.height * CGFloat(0.6/3.0))
+		container.addSubview(self.balanceLabel)
+
+		self.iceBalanceLabel = UILabel()
+		self.iceBalanceLabel.text = "x \(self.iceBalance)"
+		self.iceBalanceLabel.textColor = UIColor.whiteColor()
+		self.iceBalanceLabel.font = UIFont(name: "MarkerFelt-Wide", size: 30)
+		self.iceBalanceLabel.sizeToFit()
+		self.iceBalanceLabel.center = CGPoint(x: container.frame.width * CGFloat(5.0/6.0), y: container.frame.height * CGFloat(2.0/3.0))
+		container.addSubview(self.iceBalanceLabel)
+		
+		self.lemonBalanceLabel = UILabel()
+		self.lemonBalanceLabel.text = "x \(self.lemonBalance)"
+		self.lemonBalanceLabel.textColor = UIColor.whiteColor()
+		self.lemonBalanceLabel.font = UIFont(name: "MarkerFelt-Wide", size: 30)
+		self.lemonBalanceLabel.sizeToFit()
+		self.lemonBalanceLabel.center = CGPoint(x: container.frame.width * CGFloat(2.0/6.0), y: container.frame.height * CGFloat(2.0/3.0))
+		container.addSubview(self.lemonBalanceLabel)
 	}
 }
 
